@@ -1,34 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
+
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [dog, setDog] = useState(null)
+  const [banList, setBanList] = useState([])
+
+  const fetchDog = async () => {
+    const res = await fetch("https://api.thedogapi.com/v1/images/search?include_breeds=true")
+    const data = await res.json()
+    const newDog = data[0]
+
+    if (newDog.breeds?.length > 0) {
+      const breedName = newDog.breeds[0].name
+
+      if (!banList.includes(breedName)) {
+        setDog(newDog)
+      } else {
+          fetchDog()
+      }
+    } else {
+      fetchDog()
+    }
+  }
+
+  useEffect (() => {
+    fetchDog()
+  }, [])
+
+  const handleBan = (breed) => {
+    if (!banList.includes(breed)) {
+      setBanList([...banList, breed])
+    }
+  }
+
+  const removeBan = (breed) => {
+    setBanList(banList.filter((b) => b !== breed))
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="app-container">
+      <h1> Discover a Dog! </h1>
+      <button onClick={fetchDog}>
+        Discover New Dog
+      </button>
+    </div>
   )
 }
 
