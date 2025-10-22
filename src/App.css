@@ -1,27 +1,124 @@
-.app-container{
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fdfdfd;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.app-container {
   text-align: center;
   padding: 2rem;
-  font-family: 'Poppins', sans-serif;
-  color: #333
+  max-width: 600px;
+  width: 100%;
 }
 
 h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  color: #222;
 }
 
-.discover-button {
-  padding: 0.5rem 1rem;
-  margin: 1rem;
-  background-color: #ffb347;
-  color: white;
+button {
+  background-color: #ffb74d;
+  color: #fff;
   border: none;
-  border-radius: 6px;
-  font-weight: 600;
+  border-radius: 10px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.3s ease;
 }
 
-.discover-button:hover {
-  background-color: #ff944d
+button:hover {
+  background-color: #ffa726;
+}
+
+.error {
+  color: #e53935;
+  margin-top: 1rem;
+}
+
+.dog-card {
+  margin-top: 2rem;
+  background-color: #fff8e1;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+}
+
+.dog-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.dog-breed {
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #5d4037;
+}
+
+.ban-list {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #fff3e0;
+  border-radius: 10px;
+}
+
+.ban-item {
+  display: inline-block;
+  background-color: #ef6c00;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  margin: 0.25rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ban-item:hover {
+  background-color: #d84315;
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: 1.25rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  .dog-card {
+    padding: 1rem;
+  }
+
+  .dog-breed {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  .ban-item {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+  }
 }
