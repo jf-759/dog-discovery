@@ -122,3 +122,33 @@ button:hover {
     padding: 0.3rem 0.6rem;
   }
 }
+
+.clickable {
+  cursor: pointer;
+  color: #d84315;
+  text-decoration: underline;
+}
+
+.history {
+  margin-top: 2rem;
+}
+
+.history-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.history-item {
+  border: 1px solid #eee;
+  padding: 8px;
+  border-radius: 10px;
+  background-color: #fff3e0;
+  width: 120px;
+}
+
+.history-item img {
+  width: 100%;
+  border-radius: 8px;
+}
